@@ -1,0 +1,57 @@
+body{
+    background-color: black;
+    font-family:"IBM Plex Sans";
+    font-weight: 100;
+    color: white;
+}
+body h1{
+    margin:20px 0 0 80px;
+    text-decoration: none;
+}
+.title-nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+nav li{
+    display: inline-block;
+    width: 100px;
+    flex-wrap: wrap;
+    text-align: center;
+    font-size: large;
+}
+nav li a{
+    color:#ffffff;
+}
+.orange{
+    color:#F54A05;
+}
+.title-nav h1 a{
+    text-decoration: none;
+    color: #ffffff;
+}
+body h2, h3, ul{
+    text-align: center;
+    text-decoration: none;
+    list-style:circle;
+}
+body h2{
+  font-size: 65px;
+  margin: 200px 0 0 0;
+}
+body h3{
+    font-size: 13px;
+    padding:5px 0 30px 0;
+}
+.projects li{
+    text-align: left;
+    font-size: larger;
+    margin: 0 0 0 480px;
+}
+.projects li a{
+    text-decoration: underline;
+    color: white;
+}
+footer{
+    margin:180px 0 0 0;
+}

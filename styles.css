@@ -1,3 +1,72 @@
 body{
-    
+    background-color: black;
+    font-family:"IBM Plex Sans";
+    font-weight: 100;
+    color: white;
+}
+body h1{
+    margin:20px 0 0 80px;
+    text-decoration: none;
+}
+.title-nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+nav li{
+    display: inline-block;
+    width: 100px;
+    flex-wrap: wrap;
+    text-align: center;
+    font-size: large;
+}
+nav li a{
+    color:#ffffff;
+}
+body h2, h3, ul{
+    text-align: center;
+    text-decoration: none;
+    list-style: none;
+}
+body h2{
+  font-size: 65px;
+  margin: 200px 0 0 0;
+}
+body h3{
+    font-size: 13px;
+    padding:5px 0 30px 0;
+}
+.learn{
+    display: flex;
+    justify-content: space-between;
+    width: 66%;
+    align-items: center;
+    margin: 205px 0 0 15%;
+    font-size: larger;
+    color: #F54A05;
+    font-weight: 300;
+}
+.buttons{
+   display: flex;
+   justify-content: center;
+}
+.buttons button{
+    background-color: #ffffff;
+    color:#F54A05;
+    border: none;
+    border-radius: 80px;
+    padding: 10px;
+    align-content: center;
+    width: 100px;
+}
+.buttons a{
+    color:#F54A05;
+    text-decoration: none;
+}
+.orange{
+    color:#F54A05;
+}
+.title-nav h1 a{
+    text-decoration: none;
+    color: #ffffff;
 }
