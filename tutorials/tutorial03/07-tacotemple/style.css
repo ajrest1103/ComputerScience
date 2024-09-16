@@ -11,4 +11,14 @@ main{
     border-color: lightgray;
     margin-inline: 10px;
     margin-top: 20px;
+    display: grid;
+    grid-template-columns: 3fr 1fr ;
+    padding: 10px;
+
 }
+.card img{
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+
