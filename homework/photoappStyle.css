@@ -1,0 +1,257 @@
+body * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #F4F4F4;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Begin Debugging Code */
+header,
+main,
+section,
+article,
+nav,
+.logo {
+    padding: 10px;
+    margin: 10px;
+}
+
+.logo {
+    font-weight: normal;
+}
+
+aside,
+body>header,
+main,
+.news-feed {
+    border: solid 4px #000;
+    padding: 10px;
+    margin: 10px;
+}
+
+/* End Debugging Code */
+
+#header{
+ background-color: white; 
+ position: fixed;
+ height: 8vh;
+ width: 100%;
+ top: 0;
+ left: 0;  
+ margin: 0;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ border: none;
+}
+.logo{
+    padding: 0;
+    margin: 0 0 0 15px;
+}
+.logo a{
+    text-decoration: none;
+    color: black;
+}
+body h1{
+    font-family: "Comfortaa", sans-serif;
+    font-size: 25px;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav ul{
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+nav li{
+    margin: 0 20px 0 0; 
+}
+#rightaside{
+    background-color: #F4F4F4;
+    position: fixed;
+    width: 28%;
+    right: 0;
+    top: 10vh;
+    margin: 0;   
+    border: none;
+}
+#user-profile{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 2vh 0 3vh 1vw;
+    font-family: "Comfortaa", sans-serif;
+    color: black;
+}
+#user-profile img{
+    margin-right: 3vw;
+    border-radius: 50%;
+}
+#suggestions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:grey;
+}
+.user-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.user-box h3 {
+   margin: 5px 0 0 0;
+}
+.user-box h4 {
+    font-size: small;
+    color: grey;
+    margin: 0 0 18px 0;
+}
+.user-pic img{
+    border-radius: 50%;
+}
+.follow button{
+    color: #3399FF;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #3399FF;
+    border-radius: 3px;	
+}
+.follow button a{
+    text-decoration: none; 	
+    color: #3399FF;
+}
+
+main{
+    margin-top: 10vh;
+    max-width: 69vw;
+    margin-left: 2vw;
+}
+.story{
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    border-style: solid;
+    border-color: rgba(128, 128, 128, 0.618);
+}
+.story-container{
+    display: flex;
+    flex-direction: column;
+    margin: 1vh 0.5vw 0 0.5vw;
+    align-items: center;
+    justify-content: center;
+}
+.story img{
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    border-color: rgba(128, 128, 128, 0.734);
+    border-style: solid;
+    border-width: 3px;
+}
+.storyuser h5{
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    color: grey;
+    font-family: "Comfortaa", sans-serif;
+    font-size: 12px;
+}
+.post-body{
+    padding: 0 1vw 0 1vw;
+    border-style: solid;
+    border-color: lightgray;
+    
+}
+.post-info{
+    background-color: white;
+}
+.post-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+}
+.icons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3vh 2vw 0 0;
+    font-size: 40px;
+}
+.likes{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.likes h5{
+    font-size: 20px;
+    margin: 2vh 0 0 0;
+}
+.caption{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 10px 20px 0;
+}
+.caption h5{
+    font-size:17px;
+    margin:0 10px 0 0;
+}
+.comments{
+    display: flex;
+    flex-direction: column;
+}
+.comm{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.comm h5{
+    margin: 0 1vw 0 0;
+    font-size: 15px;
+}
+.comm p{
+    margin: 0;
+}
+.time h6{
+    margin: 1vh 0 2vh 0;
+    color: grey;
+}
+.combox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    min-height: 10vh;
+
+}
+
+
+article{
+    min-height: 300px;
+}
+
+
+@media (max-width: 800px) {
+    #rightaside{
+        display: none;
+    }
+    main{
+        margin-top: 100px;
+        max-width: 90%;
+        margin-left: 2vw;
+        margin-right: 2vw;
+
+    }
+}
