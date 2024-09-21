@@ -1,9 +1,13 @@
 const makeBigger = () => {
-   alert('make bigger!');
+   // alert('make bigger!');
+   document.getElementById("text").style.fontSize = "50px";
+   document.querySelector("h1").style.fontSize = "50px";
 };
 
 const makeSmaller = () => {
-   alert('make smaller!');
+   // alert('make smaller!');
+   document.getElementById("text").style.fontSize = "small";
+   document.querySelector("h1").style.fontSize = "small";
 };
 
 /*
@@ -16,3 +20,4 @@ Tips:
    "makeSmaller" functions (in between the curly braces)
    to target the body element and set it's font size.
 */
+
