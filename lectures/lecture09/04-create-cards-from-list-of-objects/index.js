@@ -12,8 +12,8 @@ for(const person of people){
     console.log(person);
     const snippet = `
     <div class="card">
-                <img src="http://knight.gamebanana.com/img/ico/sprays/patrick_star_preview_2.png">
-                <p>Jane's high score is: 300</p>
+                <img src="${person.pic}">
+                <p>${person.name} high score is: ${person.score}</p>
             </div>
             `;
             document.querySelector('.cards').innerHTML += snippet;
@@ -27,3 +27,4 @@ for(const person of people){
  *   * Use the build-in map method to apply the template to each person
  *   * Add the rendered templates to the DOM
  */
+
