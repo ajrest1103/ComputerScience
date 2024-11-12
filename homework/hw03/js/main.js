@@ -8,6 +8,10 @@ async function initializeScreen() {
     token = await getAccessToken(rootURL, username, password);
     showNav();
     getPosts();
+    getAndShowData();
+    showUser();
+    getAndShowSuggestions();
+    showSuggestions();
 }
 
 function showNav() {
@@ -21,6 +25,29 @@ function showNav() {
         </nav>
     `;
 }
+
+function showUser(){
+    document.querySelector("#user").innerHTML = `
+    <header class="flex gap-4 items-center">
+            <img src="https://picsum.photos/60/60?q=11" class="rounded-full w-16" />
+            <h2 class="font-Comfortaa font-bold text-2xl">${username}</h2>
+        </header>
+    `;
+}
+
+function showSuggestions(){
+    document.querySelector("#suggestions").innerHTML = `
+    <section id="suggestions" class="flex justify-between items-center mb-4 gap-2">
+        <img src="https://picsum.photos/40/40?q=11" class="rounded-full" />
+        <div class="w-[180px]">
+            <p class="font-bold text-sm">${[6].username}</p> 
+            <p class="text-gray-500 text-xs">suggested for you</p>
+        </div>
+        <button class="text-blue-500 text-sm py-2">follow</button>
+    </section>
+    `;
+}
+
 
 // implement remaining functionality below:
 /**
@@ -118,12 +145,18 @@ function showComments(comments){
 }
 
 function getLikeButton(post){
-    let iconClass = "far"
+    //Liked
     if (post.current_user_like_id){
-        iconClass = "fa-solid text-red-500"
+        return `<button onclick = "deleteLike(${post.current_user_like_id})"><i class=" fa-solid fa-heart text-red-500"></i></button>`
     }
-    return `<button><i class=" ${iconClass} fa-heart"></i></button>`
-    // return `<button><i class="far fa-heart"></i></button>`
+    else {
+        //Not Liked
+        return `
+        <button onclick="createLike(${post.id})">
+            <i class=" far fa-heart"></i>
+        </button>`;
+    }
+
 }
 
 function getBookmarkButton(post){
@@ -146,8 +179,6 @@ window.createBookmark = async function(postID){
     const postData = {
         "post_id": postID,
     };
-    
-   
         const response = await fetch(
             "https://photo-app-secured.herokuapp.com/api/bookmarks/", 
             {
@@ -162,7 +193,6 @@ window.createBookmark = async function(postID){
         console.log(data);
     
 }
-
 window.deleteBookmark = async function (bookmarkId){
     const response = await fetch(`https://photo-app-secured.herokuapp.com/api/bookmarks/${bookmarkId}`, {
         method: "DELETE",
@@ -174,18 +204,62 @@ window.deleteBookmark = async function (bookmarkId){
     const data = await response.json();
     console.log(data);
 }
+// Creating and removing likes //
+window.createLike = async function(postID){
+    const postData = {
+        "post_id": postID,
+    };
+        const response = await fetch(
+            "https://photo-app-secured.herokuapp.com/api/likes/", 
+            {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify(postData)
+        });
+        const data = await response.json();
+        console.log(data);
+    
+}
+window.deleteLike = async function (likeId){
+    const response = await fetch(`https://photo-app-secured.herokuapp.com/api/likes/${likeId}`, {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        }
+    });
+    const data = await response.json();
+    console.log(data);
+}
+
+async function getAndShowData() {
+    const response = await fetch("https://photo-app-secured.herokuapp.com/api/profile/", {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        }
+    });
+    const data = await response.json();
+    console.log(data);
+}
+
+
+async function getAndShowSuggestions() {
+    const response = await fetch("https://photo-app-secured.herokuapp.com/api/suggestions/", {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        }
+    });
+    const data = await response.json();
+    console.log(data);
+}
+
 
 // after all of the functions are defined, invoke initialize at the bottom:
 initializeScreen();
-
-
-
-
-// <p class="text-sm mb-3">
-// <strong>lizzie</strong>
-// Here is a comment text text text text text text text text.
-// </p>
-// <p class="text-sm mb-3">
-// <strong>vanek97</strong>
-// Here is another comment text text text.
-// </p>
