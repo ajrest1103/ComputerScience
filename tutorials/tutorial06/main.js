@@ -50,14 +50,14 @@ const dataToHTML = (course) => {
             <h2>${course.Code}: ${course.Title}</h2>
             <p>
                 <i class="fa-solid fa-circle-xmark"></i> 
-                Closed &bull; 10498 &bull; Number on Waitlist ${course.WaitlistAvailable}
+                ${course.} &bull; ${course.CRN} &bull; Number on Waitlist ${course.WaitlistAvailable}
             </p>
             <p>
                 ${showDays(course)}
                 ${course.Location.FullLocation} &bull; 
                 ${course.Hours} credit hour(s)
             </p>
-            <p><strong> ${course.Instructors.Name} </strong></p>
+            <p><strong>${course.Instructors.Name}</strong></p>
 
         </section>
     `;
