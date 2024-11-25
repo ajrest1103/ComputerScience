@@ -25,7 +25,7 @@ export default function App({ username, token }) {
             {/* Right Panel */}
             <aside className="fixed top-[100px] left-[63vw] w-70 hidden md:block max-w-[300px]">
                 {/* Profile Panel */}
-                <Profile token={token} />
+                <Profile token={token} username={username} />
 
                 {/* Suggestions Panel */}
                 <Suggestions token={token} />
@@ -33,3 +33,4 @@ export default function App({ username, token }) {
         </>
     );
 }
+

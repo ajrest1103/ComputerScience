@@ -16,7 +16,7 @@ export async function getAccessToken(username, password) {
     return data.access_token;
 }
 
-// Issues an HTTP GET request:
+// Issues an HTTP GET request: 
 export async function getDataFromServer(token, url) {
     const response = await fetch(url, {
         headers: {
