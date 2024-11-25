@@ -3,7 +3,7 @@ import React from "react";
 // custom components:
 import NavBar from "./NavBar";
 import Profile from "./Profile";
-import Suggestions from "./Suggestions";
+import SuggestionList from "./SuggestionList";
 import Stories from "./Stories";
 import Posts from "./Posts";
 
@@ -28,7 +28,7 @@ export default function App({ username, token }) {
                 <Profile token={token} username={username} />
 
                 {/* Suggestions Panel */}
-                <Suggestions token={token} />
+                <SuggestionList token={token} />
             </aside>
         </>
     );
