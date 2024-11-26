@@ -1,8 +1,16 @@
 Please answer the following two questions:
 
 1. What is a join (just in your own words) and why is it useful?
+    A join is a process that will take 2 tables and "merge" them when 
+    there is a column of data that is the same in both. 
+    For example is 2 tables contain ID's referencing the same user, 
+    these can be merged. This is useful as it allows us to see a wider range of data
+    other than what is held locally in that table. 
 
 
 
 
 2. Consider the structure of the posts table: why would you want to use a foreign key (user_id) to the users table instead of storing the username, first_name, and last_name in the posts table?
+    Keeping all similar data together and keeping different types of data apart both make the 
+    data safer, as one table being compromised does not put all data at risk, and keep file sizes manageable. 
+    This would also make it a lot more difficult to find data if there were no "indexing". 
