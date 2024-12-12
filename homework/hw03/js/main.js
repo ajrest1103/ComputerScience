@@ -224,44 +224,6 @@ window.deleteLike = async function (likeId){
     console.log(data);
 }
 
-async function getAndShowData() {
-    const response = await fetch("https://photo-app-secured.herokuapp.com/api/profile/", {
-        method: "GET",
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
-        }
-    });
-    const data = await response.json();
-    console.log(data);
-}
-
-
-async function getAndShowSuggestions() {
-    const response = await fetch("https://photo-app-secured.herokuapp.com/api/suggestions/", {
-        method: "GET",
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
-        }
-    });
-    const data = await response.json();
-    console.log(data);
-}
-
-function showSuggestions(){
-    document.querySelector("#suggestions").innerHTML = `
-    <section id="suggestions" class="flex justify-between items-center mb-4 gap-2">
-        <img src="https://picsum.photos/40/40?q=11" alt="profile image" class="rounded-full" />
-        <div class="w-[180px]">
-            <p class="font-bold text-sm">${[6].username}</p> 
-            <p class="text-gray-500 text-xs">suggested for you</p>
-        </div>
-        <button class="text-blue-500 text-sm py-2">follow</button>
-    </section>
-    `;
-}
-
 async function getStories(){
     const endpoint =
         "https://photo-app-secured.herokuapp.com/api/stories/";
@@ -289,6 +251,46 @@ function showStories(stories){
         mainEl.insertAdjacentHTML("beforeend", template);
        });
 }
+
+async function getAndShowData() {
+    const response = await fetch("https://photo-app-secured.herokuapp.com/api/profile/", {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        }
+    });
+    const data = await response.json();
+    console.log(data);
+    showSuggestions(data);
+}
+
+
+async function getAndShowSuggestions() {
+    const response = await fetch("https://photo-app-secured.herokuapp.com/api/suggestions/", {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        }
+    });
+    const data = await response.json();
+    console.log(data);
+}
+
+function showSuggestions(){
+    document.querySelector("aside section").innerHTML = `
+    <section id="suggestions" class="flex justify-between items-center mb-4 gap-2">
+        <img src="https://picsum.photos/40/40?q=11" alt="profile image" class="rounded-full" />
+        <div class="w-[180px]">
+            <p class="font-bold text-sm">${user.username}</p> 
+            <p class="text-gray-500 text-xs">suggested for you</p>
+        </div>
+        <button class="text-blue-500 text-sm py-2">follow</button>
+    </section>
+    `;
+}
+
 
 
 // after all of the functions are defined, invoke initialize at the bottom:
