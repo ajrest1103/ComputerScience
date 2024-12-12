@@ -12,6 +12,8 @@ async function initializeScreen() {
     showUser();
     getAndShowSuggestions();
     showSuggestions();
+    getStories();
+    showStories();
 }
 
 function showNav() {
@@ -29,25 +31,11 @@ function showNav() {
 function showUser(){
     document.querySelector("#user").innerHTML = `
     <header class="flex gap-4 items-center">
-            <img src="https://picsum.photos/60/60?q=11" class="rounded-full w-16" />
+            <img src="https://picsum.photos/60/60?q=11" alt="user profile" class="rounded-full w-16" />
             <h2 class="font-Comfortaa font-bold text-2xl">${username}</h2>
         </header>
     `;
 }
-
-function showSuggestions(){
-    document.querySelector("#suggestions").innerHTML = `
-    <section id="suggestions" class="flex justify-between items-center mb-4 gap-2">
-        <img src="https://picsum.photos/40/40?q=11" class="rounded-full" />
-        <div class="w-[180px]">
-            <p class="font-bold text-sm">${[6].username}</p> 
-            <p class="text-gray-500 text-xs">suggested for you</p>
-        </div>
-        <button class="text-blue-500 text-sm py-2">follow</button>
-    </section>
-    `;
-}
-
 
 // implement remaining functionality below:
 /**
@@ -76,6 +64,7 @@ async function getPosts() {
     console.log(posts);
 
     showPosts(posts);
+
 }
 
 function showPosts(posts){
@@ -92,7 +81,7 @@ function showPosts(posts){
                 <div class="flex justify-between text-2xl mb-3">
                     <div>
                         ${getLikeButton(post)}
-                        <button><i class="far fa-comment"></i></button>
+                        <button alt="comment"><i class="far fa-comment"></i></button>
                         <button><i class="far fa-paper-plane"></i></button>
                     </div>
                     <div>
@@ -258,6 +247,47 @@ async function getAndShowSuggestions() {
     });
     const data = await response.json();
     console.log(data);
+}
+
+function showSuggestions(){
+    document.querySelector("#suggestions").innerHTML = `
+    <section id="suggestions" class="flex justify-between items-center mb-4 gap-2">
+        <img src="https://picsum.photos/40/40?q=11" alt="profile image" class="rounded-full" />
+        <div class="w-[180px]">
+            <p class="font-bold text-sm">${[6].username}</p> 
+            <p class="text-gray-500 text-xs">suggested for you</p>
+        </div>
+        <button class="text-blue-500 text-sm py-2">follow</button>
+    </section>
+    `;
+}
+
+async function getStories(){
+    const endpoint =
+        "https://photo-app-secured.herokuapp.com/api/stories/";
+    const response = await fetch(endpoint, {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    });
+    const stories = await response.json();
+    // console.log(stories);
+
+    showStories(stories);
+}
+
+function showStories(stories){
+    const mainEl = document.querySelector("main header");
+    stories.forEach(stories => {
+        const template = ` 
+            <div class="flex flex-col justify-center items-center">
+                <img src=${stories.user.thumb_url} alt="profile image" class="rounded-full border-4 border-gray-300" />
+                <p class="text-xs text-gray-500">${stories.user.username}</p>
+            </div>`;
+        mainEl.insertAdjacentHTML("beforeend", template);
+       });
 }
 
 
