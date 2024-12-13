@@ -44,20 +44,21 @@ const filterTermMatched = (course) => {
 
 // Part 1.2
 const dataToHTML = (course) => {
-    
+    const instructorName = course.Instructors[0]?.Name;
+    const enrollmentStatus = course.EnrollmentCurrent < course.EnrollmentMax ? "open" : "closed";
     return `
         <section class="course">
             <h2>${course.Code}: ${course.Title}</h2>
             <p>
                 <i class="fa-solid fa-circle-xmark"></i> 
-                ${course.} &bull; ${course.CRN} &bull; Number on Waitlist ${course.WaitlistAvailable}
+                ${enrollmentStatus} &bull; ${course.CRN} &bull; Number on Waitlist ${course.WaitlistAvailable}
             </p>
             <p>
                 ${showDays(course)}
-                ${course.Location.FullLocation} &bull; 
+                ${course.Location.FullLocation || ""} &bull; 
                 ${course.Hours} credit hour(s)
             </p>
-            <p><strong>${course.Instructors.Name}</strong></p>
+            <p><strong>${instructorName}</strong></p>
 
         </section>
     `;
@@ -80,6 +81,7 @@ const showDays = (course) => {
 const showData = (searchTerm, openOnly) => {
     console.log(searchTerm, openOnly);
     console.log(data); // imported from course-data.js
+    data.forEach(addCourseToDOM)
    
     const searchTermMatch = (course) => {
         if (course.Title.toLowerCase().includes(searchTerm.toLowerCase())){
@@ -89,10 +91,10 @@ const showData = (searchTerm, openOnly) => {
     }
 
     const filterClassFull = (course) => {
-        if (course.Classification.Open.includes(true)){
-            return true;
-        }
-        return false;
+    //     if (course.Classification.Open.includes(true)){
+    //         return true;
+    //     }
+    //     return false;
     }
 
     
@@ -102,4 +104,3 @@ const showData = (searchTerm, openOnly) => {
     data.filter(searchTermMatch).forEach(addCourseToDOM);
     data.filter(filterClassFull).forEach(addCourseToDOM);
 };
-

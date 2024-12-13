@@ -13,9 +13,23 @@ class CommentListEndpoint(Resource):
         self.current_user = current_user
 
     def post(self):
+        data = request.json
+        print(data)
+    
+        post_id = data.get("post_id")
+        text = data.get("text")
+
+        new_comment = Comment (
+            user_id = self.current_user,
+            post_id = post_id, 
+            text = text,
+        )
+        db.session.add(new_comment)
+        db.session.commit()
+
         # TODO: Add POST logic...
         return Response(
-            json.dumps({}),
+            json.dumps({new_comment.to_dict(user=self.current_user)}),
             mimetype="application/json",
             status=201,
         )
@@ -28,7 +42,9 @@ class CommentDetailEndpoint(Resource):
 
     def delete(self, id):
         # TODO: Add DELETE logic...
-        print(id)
+        print("Comment id=", id)
+
+        
 
         return Response(
             json.dumps({}),
