@@ -1,0 +1,11 @@
+.card{
+    border: 1px solid;
+    max-width: 500px;
+    padding:10px;
+}
+.card img{
+    max-width: 100%;
+}
+.card h2{
+    text-align: center;
+}
